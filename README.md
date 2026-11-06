@@ -1,71 +1,57 @@
-# Todo List App
+# MyTodoList
 
-Todo List App is a simple web application built using React. It allows users to manage their todo tasks, including adding new tasks, marking tasks as completed, and deleting tasks.
+A simple todo list web app built with React and Bootstrap, with todos saved in the browser's localStorage.
 
+Built as a practice project while learning React.
 
-![Screenshot 1](screenshots/todo-list.png)
+**Live demo:** https://todolist-qbdw.onrender.com/
+
+![Todo list screenshot](screenshots/todo-list.png)
 
 ## Features
 
-- Add new todo tasks with a title and description.
-- View a list of all todo tasks.
-- Delete todo tasks.
-- Save todo tasks in local storage for persistence across sessions.
+- Add a todo with a title and description (both required).
+- View all todos, with an empty-state message when there are none.
+- Delete individual todos.
+- Todos persist across page reloads via `localStorage`.
+- Client-side routing between Home and a placeholder About page (React Router).
 
+## Tech stack
 
-## Technologies Used
+- React 18 (Create React App / `react-scripts`)
+- React Router v6
+- Bootstrap 5 (loaded from CDN in `public/index.html`)
 
-- React
-- React Router
-- HTML
-- CSS
+## Getting started
 
-## Project Structure
+Prerequisites: Node.js 16+ and npm.
 
-The project consists of the following components:
-
-- **Header**: Displays the title of the application.
-- **AddTodo**: Component for adding new todo tasks.
-- **Todos**: Component for displaying a list of todo tasks.
-- **Footer**: Displays the footer of the application.
-- **About**: Information about the application.
-
-## Installation
-
-1. Clone the repository to your local machine:
-
-```
-git clone https://github.com/AkshayTripathi0331/todo-list-app.git
-```
-
-2. Navigate to the project directory:
-
-```
-cd todo-list-app
-```
-
-3. Install dependencies:
-
-```
+```bash
+git clone https://github.com/AkshayTripathiAI/MyTodoList.git
+cd MyTodoList
 npm install
-```
-
-4. Start the development server:
-
-```
 npm start
 ```
 
-5. Open your web browser and navigate to `http://localhost:3000` to view the application.
+Then open http://localhost:3000.
 
-## Usage
+Other scripts: `npm run build` (production build into `build/`), `npm test` (Jest test runner).
 
-- Add a new todo task by entering the title and description in the AddTodo section and clicking the "Add" button.
-- View all todo tasks in the Todos section.
-- Mark a todo task as completed by clicking the checkbox next to it.
-- Delete a todo task by clicking the delete button next to it.
+## Project structure
 
-## Live Demo
+```
+src/
+├── App.js              # Todo state, localStorage sync, routes
+├── index.js            # Entry point
+└── MyComponents/
+    ├── Header.js       # Navbar
+    ├── AddTodo.js      # Add-todo form
+    ├── Todos.js        # Todo list
+    ├── TodoItem.js     # Single todo with Delete button
+    ├── About.js        # About page (placeholder text)
+    └── Footer.js
+```
 
-A live demo of the project is hosted on GitHub Pages: [Todo List App Demo](https://todolist-qbdw.onrender.com/)
+## License
 
+[MIT](LICENSE)
