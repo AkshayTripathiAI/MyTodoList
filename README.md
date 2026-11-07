@@ -4,7 +4,7 @@ A simple todo list web app built with React and Bootstrap, with todos saved in t
 
 Built as a practice project while learning React.
 
-**Live demo:** https://todolist-qbdw.onrender.com/
+**Live demo:** https://akshaytripathiai.github.io/MyTodoList/ (also on Render: https://todolist-qbdw.onrender.com/)
 
 ![Todo list screenshot](screenshots/todo-list.png)
 
