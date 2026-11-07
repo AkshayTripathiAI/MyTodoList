@@ -1,45 +1,64 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-export const AddTodo = (props) => {
+export const AddTodo = ({ addTodo }) => {
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [error, setError] = useState("");
 
-    const [title,setTitle]=useState("");
-    const[desc, setDesc]=useState("");
-    
-    const submit = (e) =>{
-        e.preventDefault();
-        if(!title || !desc){
-            alert("Title or Description can not be blanked")
-        }
-        else{
-        props.addTodo(title,desc);
-        
-        setTitle("");
-        setDesc("");
-        }
+  const submit = (e) => {
+    e.preventDefault();
+    const cleanTitle = title.trim();
+    if (!cleanTitle) {
+      setError("Please give your todo a title.");
+      return;
     }
+    addTodo(cleanTitle, desc.trim());
+    setTitle("");
+    setDesc("");
+    setError("");
+  };
 
-
-    return (
-        <div className='container my-3'>
-            <h3>Add a Todo</h3>
-
-            <form onSubmit={submit}>
-                <div className="mb-3">
-                    <label htmlFor="title" className="form-label">Todo Title</label>
-                    <input type="text" value={title}  onChange={(e)=>{setTitle(e.target.value)}} className="form-control" id="title" aria-describedby="emailHelp"/>
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="desc" className="form-label">Todo description</label>
-                    <input type="text" value={desc}  onChange={(e)=>{setDesc(e.target.value)}} className="form-control" id="desc"/>
-                </div>
-                {/* <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                        <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-                </div> */}
-                <button type="submit" className="btn btn-sm btn-success">Add Todo</button>
-            </form>
+  return (
+    <div className="container todo-card my-4">
+      <div className="card shadow-sm">
+        <div className="card-body">
+          <h3 className="h5 card-title">Add a Todo</h3>
+          <form onSubmit={submit} noValidate>
+            <div className="mb-3">
+              <label htmlFor="title" className="form-label">Title</label>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className={`form-control${error ? " is-invalid" : ""}`}
+                id="title"
+                placeholder="e.g. Buy groceries"
+                aria-describedby="title-error"
+              />
+              {error && <div id="title-error" className="invalid-feedback">{error}</div>}
+            </div>
+            <div className="mb-3">
+              <label htmlFor="desc" className="form-label">
+                Description <span className="text-muted">(optional)</span>
+              </label>
+              <input
+                type="text"
+                value={desc}
+                onChange={(e) => setDesc(e.target.value)}
+                className="form-control"
+                id="desc"
+                placeholder="e.g. Milk, eggs, bread"
+              />
+            </div>
+            <button type="submit" className="btn btn-success">Add Todo</button>
+          </form>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-//export default AddTodo
+AddTodo.propTypes = {
+  addTodo: PropTypes.func.isRequired,
+};

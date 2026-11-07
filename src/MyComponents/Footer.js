@@ -1,16 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 export const Footer = () => {
-  // let footerStyl={
-  //   position:"relative",
-  //   top:"70vh",
-  //   width: "100%"
-  // }
   return (
-    <div className='bg-dark text-light py-3 godown' >
-      <p className="text-center">Copyright &copy; MyTodoList.com</p>
-    </div>
-  )
-}
-
-// export default Footer
+    <footer className="bg-dark text-light py-3">
+      <p className="text-center mb-0">
+        MyTodoList &copy; {new Date().getFullYear()} &middot; Your todos are saved in this browser.
+      </p>
+    </footer>
+  );
+};

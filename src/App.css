@@ -1,28 +1,42 @@
-.App {
-  text-align: center;
-  background-color: #73b724;
-  min-height: 100vh;
-}
-
-
-
-
-
-.App-header {
-  background-color: #282c34;
+.app-shell {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(239, 26, 26);
+  background-color: #f6f8fa;
 }
 
-.App-link {
-  color: #61dafb;
+.todo-card {
+  max-width: 720px;
 }
 
+.todo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
 
+.todo-item .form-check-input {
+  margin-top: 0.35rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
 
+.todo-item .todo-text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 
+.todo-item.done h5,
+.todo-item.done p {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+.todo-item h5 {
+  margin-bottom: 0.25rem;
+}
+
+.todo-item p {
+  margin-bottom: 0;
+}
